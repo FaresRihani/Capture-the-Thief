@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CaptureTheThief
 {
+    //Game info class
     public class GameInfo
     {
         public int ID { get; set; }
-       
         public PlayerInfo Police { get; set; }
         public PlayerInfo Thief { get; set; }
         public DateTime Date { get; set; }
