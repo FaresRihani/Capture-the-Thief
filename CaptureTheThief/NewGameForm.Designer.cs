@@ -55,6 +55,8 @@ namespace CaptureTheThief
             this.mapNameLbl = new System.Windows.Forms.Label();
             this.policeComputerRbtn = new System.Windows.Forms.RadioButton();
             this.thiefComputerRbtn = new System.Windows.Forms.RadioButton();
+            this.police1Comb = new System.Windows.Forms.ComboBox();
+            this.police1ComputerRbtn = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mapsPbx)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +81,8 @@ namespace CaptureTheThief
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1064, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(709, 31);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,7 +93,7 @@ namespace CaptureTheThief
             this.toolStripSeparator1,
             this.endToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // newToolStripMenuItem
@@ -118,7 +121,7 @@ namespace CaptureTheThief
             this.newToolStripMenuItem1,
             this.currentToolStripMenuItem});
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(78, 30);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.profileToolStripMenuItem.Text = "Profile";
             // 
             // newToolStripMenuItem1
@@ -141,7 +144,7 @@ namespace CaptureTheThief
             this.statisticsToolStripMenuItem,
             this.historyToolStripMenuItem});
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(81, 30);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
             this.reportToolStripMenuItem.Text = "Report";
             // 
             // statisticsToolStripMenuItem
@@ -161,14 +164,14 @@ namespace CaptureTheThief
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 30);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 29);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -194,9 +197,10 @@ namespace CaptureTheThief
             this.startTheGameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startTheGameBtn.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startTheGameBtn.ForeColor = System.Drawing.Color.White;
-            this.startTheGameBtn.Location = new System.Drawing.Point(424, 171);
+            this.startTheGameBtn.Location = new System.Drawing.Point(283, 111);
+            this.startTheGameBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startTheGameBtn.Name = "startTheGameBtn";
-            this.startTheGameBtn.Size = new System.Drawing.Size(236, 198);
+            this.startTheGameBtn.Size = new System.Drawing.Size(157, 129);
             this.startTheGameBtn.TabIndex = 9;
             this.startTheGameBtn.UseVisualStyleBackColor = false;
             this.startTheGameBtn.Click += new System.EventHandler(this.button1_Click);
@@ -207,9 +211,10 @@ namespace CaptureTheThief
             this.thiefComb.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thiefComb.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.thiefComb.FormattingEnabled = true;
-            this.thiefComb.Location = new System.Drawing.Point(830, 466);
+            this.thiefComb.Location = new System.Drawing.Point(553, 303);
+            this.thiefComb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.thiefComb.Name = "thiefComb";
-            this.thiefComb.Size = new System.Drawing.Size(199, 37);
+            this.thiefComb.Size = new System.Drawing.Size(134, 37);
             this.thiefComb.TabIndex = 8;
             this.thiefComb.SelectedIndexChanged += new System.EventHandler(this.thiefComb_SelectedIndexChanged_1);
             // 
@@ -219,19 +224,19 @@ namespace CaptureTheThief
             this.policeComb.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.policeComb.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.policeComb.FormattingEnabled = true;
-            this.policeComb.Location = new System.Drawing.Point(38, 466);
+            this.policeComb.Location = new System.Drawing.Point(25, 303);
+            this.policeComb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.policeComb.Name = "policeComb";
-            this.policeComb.Size = new System.Drawing.Size(199, 37);
+            this.policeComb.Size = new System.Drawing.Size(134, 37);
             this.policeComb.TabIndex = 7;
             this.policeComb.SelectedIndexChanged += new System.EventHandler(this.policeComb_SelectedIndexChanged_1);
             // 
             // mapsPbx
             // 
             this.mapsPbx.BackColor = System.Drawing.Color.Transparent;
-            this.mapsPbx.Location = new System.Drawing.Point(408, 382);
-            this.mapsPbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.mapsPbx.Location = new System.Drawing.Point(272, 248);
             this.mapsPbx.Name = "mapsPbx";
-            this.mapsPbx.Size = new System.Drawing.Size(215, 144);
+            this.mapsPbx.Size = new System.Drawing.Size(143, 94);
             this.mapsPbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mapsPbx.TabIndex = 22;
             this.mapsPbx.TabStop = false;
@@ -254,10 +259,9 @@ namespace CaptureTheThief
             this.nextMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextMapBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextMapBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.nextMapBtn.Location = new System.Drawing.Point(490, 494);
-            this.nextMapBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nextMapBtn.Location = new System.Drawing.Point(327, 321);
             this.nextMapBtn.Name = "nextMapBtn";
-            this.nextMapBtn.Size = new System.Drawing.Size(45, 34);
+            this.nextMapBtn.Size = new System.Drawing.Size(30, 22);
             this.nextMapBtn.TabIndex = 23;
             this.nextMapBtn.UseVisualStyleBackColor = false;
             this.nextMapBtn.Click += new System.EventHandler(this.nextMapBtn_Click);
@@ -268,8 +272,7 @@ namespace CaptureTheThief
             this.mapNameLbl.BackColor = System.Drawing.Color.Transparent;
             this.mapNameLbl.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mapNameLbl.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.mapNameLbl.Location = new System.Drawing.Point(412, 539);
-            this.mapNameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mapNameLbl.Location = new System.Drawing.Point(275, 350);
             this.mapNameLbl.Name = "mapNameLbl";
             this.mapNameLbl.Size = new System.Drawing.Size(27, 29);
             this.mapNameLbl.TabIndex = 24;
@@ -281,7 +284,8 @@ namespace CaptureTheThief
             this.policeComputerRbtn.AutoSize = true;
             this.policeComputerRbtn.BackColor = System.Drawing.Color.Transparent;
             this.policeComputerRbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.policeComputerRbtn.Location = new System.Drawing.Point(245, 206);
+            this.policeComputerRbtn.Location = new System.Drawing.Point(163, 134);
+            this.policeComputerRbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.policeComputerRbtn.Name = "policeComputerRbtn";
             this.policeComputerRbtn.Size = new System.Drawing.Size(21, 20);
             this.policeComputerRbtn.TabIndex = 25;
@@ -294,7 +298,8 @@ namespace CaptureTheThief
             this.thiefComputerRbtn.AutoSize = true;
             this.thiefComputerRbtn.BackColor = System.Drawing.Color.Transparent;
             this.thiefComputerRbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thiefComputerRbtn.Location = new System.Drawing.Point(799, 210);
+            this.thiefComputerRbtn.Location = new System.Drawing.Point(533, 136);
+            this.thiefComputerRbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.thiefComputerRbtn.Name = "thiefComputerRbtn";
             this.thiefComputerRbtn.Size = new System.Drawing.Size(21, 20);
             this.thiefComputerRbtn.TabIndex = 26;
@@ -302,14 +307,42 @@ namespace CaptureTheThief
             this.thiefComputerRbtn.UseVisualStyleBackColor = false;
             this.thiefComputerRbtn.CheckedChanged += new System.EventHandler(this.thiefComputerRbtn_CheckedChanged);
             // 
+            // police1Comb
+            // 
+            this.police1Comb.BackColor = System.Drawing.SystemColors.MenuText;
+            this.police1Comb.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1Comb.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.police1Comb.FormattingEnabled = true;
+            this.police1Comb.Location = new System.Drawing.Point(306, 60);
+            this.police1Comb.Margin = new System.Windows.Forms.Padding(2);
+            this.police1Comb.Name = "police1Comb";
+            this.police1Comb.Size = new System.Drawing.Size(134, 37);
+            this.police1Comb.TabIndex = 27;
+            // 
+            // police1ComputerRbtn
+            // 
+            this.police1ComputerRbtn.AutoSize = true;
+            this.police1ComputerRbtn.BackColor = System.Drawing.Color.Transparent;
+            this.police1ComputerRbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1ComputerRbtn.Location = new System.Drawing.Point(253, 68);
+            this.police1ComputerRbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.police1ComputerRbtn.Name = "police1ComputerRbtn";
+            this.police1ComputerRbtn.Size = new System.Drawing.Size(21, 20);
+            this.police1ComputerRbtn.TabIndex = 28;
+            this.police1ComputerRbtn.TabStop = true;
+            this.police1ComputerRbtn.UseVisualStyleBackColor = false;
+            this.police1ComputerRbtn.CheckedChanged += new System.EventHandler(this.police1ComputerRbtn_CheckedChanged);
+            // 
             // NewGameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::CaptureTheThief.Properties.Resources._1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1064, 577);
+            this.ClientSize = new System.Drawing.Size(709, 375);
+            this.Controls.Add(this.police1ComputerRbtn);
+            this.Controls.Add(this.police1Comb);
             this.Controls.Add(this.nextMapBtn);
             this.Controls.Add(this.thiefComputerRbtn);
             this.Controls.Add(this.policeComputerRbtn);
@@ -321,6 +354,7 @@ namespace CaptureTheThief
             this.Controls.Add(this.startTheGameBtn);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "NewGameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -359,5 +393,7 @@ namespace CaptureTheThief
         private System.Windows.Forms.Label mapNameLbl;
         private System.Windows.Forms.RadioButton policeComputerRbtn;
         private System.Windows.Forms.RadioButton thiefComputerRbtn;
+        private System.Windows.Forms.ComboBox police1Comb;
+        private System.Windows.Forms.RadioButton police1ComputerRbtn;
     }
 }

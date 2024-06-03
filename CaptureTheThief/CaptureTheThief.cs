@@ -12,26 +12,37 @@ namespace CaptureTheThief
 
         static int GameID = 0;
         bool policeMoveUp, policeMoveRight, policeMoveLeft, policeMoveDown;
+        bool police1MoveUp, police1MoveRight, police1MoveLeft, police1MoveDown;
         bool thiefMoveUp, thiefMoveRight, thiefMoveLeft, thiefMoveDown;
         
         int totalSeconds = 120, gameDuration = 0;
-        int policeScore = 0, thiefScore = 0;
+        int policeScore = 0, police1Score = 0, thiefScore = 0;
         string winner;
-        Color policeColor, thiefColor;
+        Color policeColor,police1Color, thiefColor;
         Random rand = new Random();
-        DateTime policeFreezeEndTime ,thiefFreezeEndTime ,policeInvisibleEndTime, thiefInvisibleEndTime, policeFlashEndTime,thiefFlashEndTime,policeSnailEndTime,thiefSnailEndTime;
-        bool isPoliceFreezed = false, isThiefFreezed = false, isPoliceInvisible = false, isThiefInvisible = false, isPoliceHitFlash = false, isThiefHitFlash = false, isThiefHitSnail = false, isPoliceHitSnail = false;
-        bool isPoliceComputerMode = Data.isPoliceComputerMode, isThiefComputerMode = Data.isThiefComputerMode;
-        int sec = 1,location = 0;
+        DateTime policeFreezeEndTime, police1FreezeEndTime, thiefFreezeEndTime ,policeInvisibleEndTime, police1InvisibleEndTime, thiefInvisibleEndTime, policeFlashEndTime, police1FlashEndTime, thiefFlashEndTime,policeSnailEndTime, police1SnailEndTime, thiefSnailEndTime;
+        bool isPoliceFreezed = false, isPolice1Freezed = false,isThiefFreezed = false, isPoliceInvisible = false, isPolice1Invisible = false, isThiefInvisible = false, isPoliceHitFlash = false, isPolice1HitFlash = false, isThiefHitFlash = false, isThiefHitSnail = false, isPoliceHitSnail = false, isPolice1HitSnail = false;
+        bool isPoliceComputerMode = Data.isPoliceComputerMode, isPolice1ComputerMode = Data.isPolice1ComputerMode, isThiefComputerMode = Data.isThiefComputerMode;
+        int sec = 1, location = 0;
 
-        private int policeSpeed = 12, thiefSpeed = 12;
+        private int policeSpeed = 12, police1Speed = 12, thiefSpeed = 12;
+        private void police1Timer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+       
         public CaptureTheThief()
         {
             game.Police = Data.CurrentPolice;
+            game.Police1 = Data.CurrentPolice1;
             game.Thief = Data.CurrentThief;
             game.Date = DateTime.Now;
             InitializeComponent();
             policeNameBarResultLbl.Text = game.Police.Name;
+            police1NameBarResultLbl.Text = game.Police1.Name;
             thiefNameResultBarLbl.Text = game.Thief.Name;
 
             //Police BackColor
@@ -48,7 +59,22 @@ namespace CaptureTheThief
                 policeColor = Color.FromArgb(200, 223, 218, 0);
             }
             policeBarPanel.BackColor = Color.FromArgb(200, policeColor);
-            
+
+            //Police1 BackColor
+            if (game.Police1.backgroundColor == ColorEnum.Blue)
+            {
+                police1Color = Color.FromArgb(200, 0, 16, 130);
+            }
+            else if (game.Police1.backgroundColor == ColorEnum.Green)
+            {
+                police1Color = Color.FromArgb(200, 33, 102, 0);
+            }
+            else
+            {
+                police1Color = Color.FromArgb(200, 223, 218, 0);
+            }
+            police1BarPanel.BackColor = Color.FromArgb(200, police1Color);
+
             //Thief BackColor
             if (game.Thief.backgroundColor == ColorEnum.Blue)
             {
@@ -67,6 +93,7 @@ namespace CaptureTheThief
             resetGame();
         }
 
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -83,6 +110,11 @@ namespace CaptureTheThief
         }
 
         private void panel10_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void police1Pbx_Click(object sender, EventArgs e)
         {
 
         }
@@ -105,6 +137,7 @@ namespace CaptureTheThief
         private void CaptureTheThief_Load(object sender, EventArgs e)
         { 
             policePbx.BackColor = Color.FromArgb(200, 51, 55, 67);
+            police1Pbx.BackColor = Color.FromArgb(200, 51, 55, 67);
             thiefPbx.BackColor = Color.FromArgb(200, 51, 55, 67);
             freezePbx.BackColor = Color.FromArgb(200, 51, 55, 67);
             invisiblePbx.BackColor = Color.FromArgb(200, 51, 55, 67);
@@ -113,10 +146,11 @@ namespace CaptureTheThief
             gameOverPanel.BackColor = Color.FromArgb(200, 51, 55, 67);
 
             policePbx.BackgroundImage = Properties.Resources.police_right;
+            police1Pbx.BackgroundImage = Properties.Resources.police_right;
             thiefPbx.BackgroundImage = Properties.Resources.thief_right;
 
             if (Data.count == 0)
-            {
+            {         
                 gameMapPbx.Image = imageList1.Images[0];
             }
             else if (Data.count == 1)
@@ -170,6 +204,7 @@ namespace CaptureTheThief
         private void timeLeftTimer_Tick(object sender, EventArgs e)
         {
             policeScoreBarResultLbl.Text = policeScore.ToString();
+            police1ScoreBarResultLbl.Text = police1Score.ToString();
             thiefScoreResultBarLbl.Text = thiefScore.ToString();
             //Timer Logic
             if (totalSeconds > 0)
@@ -190,7 +225,7 @@ namespace CaptureTheThief
             
            
             //Thief Score Logic
-            if (!policePbx.Bounds.IntersectsWith(thiefPbx.Bounds) && sec == 15)
+            if (!policePbx.Bounds.IntersectsWith(thiefPbx.Bounds) && !police1Pbx.Bounds.IntersectsWith(thiefPbx.Bounds) && sec == 15)
             {
                 thiefScore += 1;
             }
@@ -255,6 +290,42 @@ namespace CaptureTheThief
                 policeComputerPlayer();
             }
 
+            // for the police1 picture box : 
+            //changes the character direction based on the pressed key 
+            // fills the boolian variables with true to make the character move 
+            if (isPolice1ComputerMode == false)
+            {
+                if (e.KeyCode == Keys.J)
+                {
+                    police1Pbx.BackgroundImage = null;
+                    police1MoveLeft = true;
+                    police1Pbx.BackgroundImage = Properties.Resources.police_left;
+                }
+                if (e.KeyCode == Keys.L)
+                {
+                    police1Pbx.BackgroundImage = null;
+                    police1MoveRight = true;
+                    police1Pbx.BackgroundImage = Properties.Resources.police_right;
+                }
+                if (e.KeyCode == Keys.I)
+                {
+                    police1Pbx.BackgroundImage = null;
+                    police1MoveUp = true;
+                    police1Pbx.BackgroundImage = Properties.Resources.police_up;
+
+                }
+                if (e.KeyCode == Keys.K)
+                {
+                    police1Pbx.BackgroundImage = null;
+                    police1MoveDown = true;
+                    police1Pbx.BackgroundImage = Properties.Resources.police_down;
+                }
+            }
+            else
+            {
+                police1ComputerPlayer();
+            }
+
 
             // for the thief picture box : 
             //changes the character direction based on the pressed key 
@@ -316,6 +387,29 @@ namespace CaptureTheThief
 
             //....................................................................................
 
+            // fills the boolian variables with false when the key is unpressed for the police1 and the thief 
+
+            //the police1 character 
+
+            if (e.KeyCode == Keys.J)
+            {
+                police1MoveLeft = false;
+            }
+            if (e.KeyCode == Keys.L)
+            {
+                police1MoveRight = false;
+            }
+            if (e.KeyCode == Keys.I)
+            {
+                police1MoveUp = false;
+            }
+            if (e.KeyCode == Keys.K)
+            {
+                police1MoveDown = false;
+            }
+
+            //....................................................................................
+
             //the thief character 
 
             if (e.KeyCode == Keys.Left)
@@ -340,13 +434,15 @@ namespace CaptureTheThief
         {
             if (policePbx.Left < thiefPbx.Left)
             {
-                policePbx.BackgroundImage = null; policeMoveRight = true;
+                policePbx.BackgroundImage = null;
+                policeMoveRight = true;
                 policePbx.BackgroundImage = Properties.Resources.police_right;
                 policePbx.Left += policeSpeed;
             }
             if (policePbx.Left > thiefPbx.Left)
             {
-                policePbx.BackgroundImage = null; policeMoveLeft = true;
+                policePbx.BackgroundImage = null;
+                policeMoveLeft = true;
                 policePbx.BackgroundImage = Properties.Resources.police_left;
                 policePbx.Left -= policeSpeed;
             }
@@ -359,9 +455,41 @@ namespace CaptureTheThief
             }
             if (policePbx.Top > thiefPbx.Top)
             {
-                policePbx.BackgroundImage = null; policeMoveUp = true;
+                policePbx.BackgroundImage = null;
+                policeMoveUp = true;
                 policePbx.BackgroundImage = Properties.Resources.police_up;
                 policePbx.Top -= policeSpeed;
+            }
+        }
+        private void police1ComputerPlayer()
+        {
+            if (police1Pbx.Left < thiefPbx.Left)
+            {
+                police1Pbx.BackgroundImage = null;
+                police1MoveRight = true;
+                police1Pbx.BackgroundImage = Properties.Resources.police_right;
+                police1Pbx.Left += police1Speed;
+            }
+            if (police1Pbx.Left > thiefPbx.Left)
+            {
+                police1Pbx.BackgroundImage = null;
+                police1MoveLeft = true;
+                police1Pbx.BackgroundImage = Properties.Resources.police_left;
+                police1Pbx.Left -= police1Speed;
+            }
+            if (police1Pbx.Top < thiefPbx.Top)
+            {
+                police1Pbx.BackgroundImage = null;
+                police1MoveDown = true;
+                police1Pbx.BackgroundImage = Properties.Resources.police_down;
+                police1Pbx.Top += police1Speed;
+            }
+            if (police1Pbx.Top > thiefPbx.Top)
+            {
+                police1Pbx.BackgroundImage = null;
+                police1MoveUp = true;
+                police1Pbx.BackgroundImage = Properties.Resources.police_up;
+                police1Pbx.Top -= police1Speed;
             }
         }
 
@@ -403,7 +531,7 @@ namespace CaptureTheThief
             if (policePbx.Bounds.IntersectsWith(thiefPbx.Bounds))
             {
                 policeScore += 1;
-                randomLocationsForThiefAndPolice();
+                randomLocationsForThiefAndPoliceAndPolice1();
                 sec = 0;
             }
            
@@ -539,6 +667,150 @@ namespace CaptureTheThief
                 invisiblePbx.Visible = true;
                 policePbx.Visible = true;
                 isPoliceInvisible = false;
+            }
+        }
+        private void police1MoveTimerEvent(object sender, EventArgs e)
+        {
+            //Score for Police1
+            if (police1Pbx.Bounds.IntersectsWith(thiefPbx.Bounds))
+            {
+                police1Score += 1;
+                randomLocationsForThiefAndPoliceAndPolice1();
+                sec = 0;
+            }
+
+
+
+            // this code is responsable of making the character move if there is not any intersection 
+
+            GameInfo game = new GameInfo();
+
+            if (police1Pbx.Bounds.IntersectsWith(panel1.Bounds) == false && police1Pbx.Bounds.IntersectsWith(panel2.Bounds) == false
+             && police1Pbx.Bounds.IntersectsWith(panel3.Bounds) == false && police1Pbx.Bounds.IntersectsWith(panel4.Bounds) == false && police1Pbx.Bounds.IntersectsWith(panel5.Bounds) == false
+             && police1Pbx.Bounds.IntersectsWith(panel6.Bounds) == false && police1Pbx.Bounds.IntersectsWith(panel7.Bounds) == false && police1Pbx.Bounds.IntersectsWith(panel8.Bounds) == false
+             && police1Pbx.Bounds.IntersectsWith(panel9.Bounds) == false)
+            {
+                if (police1MoveLeft == true && police1Pbx.Left > 24)
+                {
+                    police1Pbx.Left -= police1Speed;
+                }
+                if (police1MoveRight == true && police1Pbx.Left < 763)
+                {
+                    police1Pbx.Left += police1Speed;
+                }
+                if (police1MoveUp == true && police1Pbx.Top > 90)
+                {
+                    police1Pbx.Top -= police1Speed;
+                }
+                if (police1MoveDown == true && police1Pbx.Top < 450)
+                {
+                    police1Pbx.Top += police1Speed;
+                }
+            }
+
+
+            // for the police 1
+            // if the police picturebox intersects with the bnounds of panels this code kind of undo the last movement
+
+            else
+            {
+                while (police1Pbx.Bounds.IntersectsWith(panel1.Bounds) == true || police1Pbx.Bounds.IntersectsWith(panel2.Bounds) == true ||
+                       police1Pbx.Bounds.IntersectsWith(panel3.Bounds) == true || police1Pbx.Bounds.IntersectsWith(panel4.Bounds) == true || police1Pbx.Bounds.IntersectsWith(panel5.Bounds) == true ||
+                       police1Pbx.Bounds.IntersectsWith(panel6.Bounds) == true || police1Pbx.Bounds.IntersectsWith(panel7.Bounds) == true || police1Pbx.Bounds.IntersectsWith(panel8.Bounds) == true ||
+                       police1Pbx.Bounds.IntersectsWith(panel9.Bounds) == true)
+                {
+
+                    if (police1MoveLeft == true && police1Pbx.Left > 24)
+                    {
+                        police1Pbx.Left += police1Speed;
+                        police1MoveLeft = false;
+                        break;
+
+
+                    }
+                    if (police1MoveRight == true && police1Pbx.Left < 763)
+                    {
+                        police1Pbx.Left -= police1Speed;
+                        police1MoveRight = false;
+                        break;
+
+                    }
+                    if (police1MoveUp == true && police1Pbx.Top > 90)
+                    {
+                        police1Pbx.Top += police1Speed;
+                        police1MoveUp = false;
+                        break;
+
+                    }
+                    if (police1MoveDown == true && police1Pbx.Top < 450)
+                    {
+                        police1Pbx.Top -= police1Speed;
+                        police1MoveDown = false;
+                        break;
+
+                    }
+                    break;
+                }
+            }
+            //Police1 Flash 
+            if (police1Pbx.Bounds.IntersectsWith(flashPbx.Bounds) && isThiefHitFlash == false)
+            {
+                flashPbx.Visible = false;
+                police1Speed = 19;
+                police1FlashEndTime = DateTime.Now.AddSeconds(2);
+                isPolice1HitFlash = true;
+
+            }
+            if (DateTime.Now > police1FlashEndTime && isPolice1HitFlash)
+            {
+                flashPbx.Visible = true;
+                police1Speed = 12;
+                isPolice1HitFlash = false;
+            }
+            //Police1 snail 
+            if (police1Pbx.Bounds.IntersectsWith(snailPbx.Bounds) && isThiefHitSnail == false)
+            {
+                snailPbx.Visible = false;
+                police1Speed = 5;
+                police1SnailEndTime = DateTime.Now.AddSeconds(2);
+                isPolice1HitSnail = true;
+
+            }
+            if (DateTime.Now > police1SnailEndTime && isPolice1HitSnail)
+            {
+                snailPbx.Visible = true;
+                police1Speed = 12;
+                isPolice1HitSnail = false;
+            }
+            //Police1 Freeze 
+            if (police1Pbx.Bounds.IntersectsWith(freezePbx.Bounds) && isThiefFreezed == false)
+            {
+                freezePbx.Visible = false;
+                police1Speed = 0;
+                police1FreezeEndTime = DateTime.Now.AddSeconds(2);
+                isPolice1Freezed = true;
+
+            }
+            if (DateTime.Now > police1FreezeEndTime && isPolice1Freezed)
+            {
+                freezePbx.Visible = true;
+                police1Speed = 12;
+                isPolice1Freezed = false;
+            }
+            //Police1 Invisible
+            if (police1Pbx.Bounds.IntersectsWith(invisiblePbx.Bounds) && isThiefInvisible == false)
+            {
+                invisiblePbx.Visible = false;
+                police1Pbx.Visible = false;
+                police1InvisibleEndTime = DateTime.Now.AddSeconds(2);
+                isPolice1Invisible = true;
+
+            }
+            if (DateTime.Now > police1InvisibleEndTime && isPolice1Invisible)
+            {
+                invisiblePbx.Visible = true;
+                police1Pbx.Visible = true;
+                isPolice1Invisible = false;
             }
         }
 
@@ -684,7 +956,7 @@ namespace CaptureTheThief
 
         }
 
-        private void randomLocationsForThiefAndPolice()
+        private void randomLocationsForThiefAndPoliceAndPolice1()
         {
             // Police Spawn Randomly
             location = rand.Next(1, 11);
@@ -719,6 +991,42 @@ namespace CaptureTheThief
                     break;
                 case 10:
                     policePbx.Location = new Point(200, 277);
+                    break;
+
+            }
+            // Police1 Spawn Randomly
+            location = rand.Next(1, 11);
+            switch (location)
+            {
+                case 1:
+                    police1Pbx.Location = new Point(12, 444);
+                    break;
+                case 2:
+                    police1Pbx.Location = new Point(11, 80);
+                    break;
+                case 3:
+                    police1Pbx.Location = new Point(11, 272);
+                    break;
+                case 4:
+                    police1Pbx.Location = new Point(199, 326);
+                    break;
+                case 5:
+                    police1Pbx.Location = new Point(348, 331);
+                    break;
+                case 6:
+                    police1Pbx.Location = new Point(348, 446);
+                    break;
+                case 7:
+                    police1Pbx.Location = new Point(163, 446);
+                    break;
+                case 8:
+                    police1Pbx.Location = new Point(277, 183);
+                    break;
+                case 9:
+                    police1Pbx.Location = new Point(201, 119);
+                    break;
+                case 10:
+                    police1Pbx.Location = new Point(200, 277);
                     break;
 
             }
@@ -765,7 +1073,9 @@ namespace CaptureTheThief
             if (totalSeconds < 80 && totalSeconds > 40)
             {
                 startLevelTwo();
+                 
             }
+            // Start Level Three
             if (totalSeconds <= 40)
             {
                 startLevelThree();
@@ -776,6 +1086,7 @@ namespace CaptureTheThief
         {
             levelsTimer.Start();
             policeTimer.Start();
+            police1Timer.Start();
             ThiefTimer.Start();
             timeLeftTimer.Start();
             
@@ -784,23 +1095,32 @@ namespace CaptureTheThief
 
 
             policeScore = 0;
+            police1Score = 0;
             thiefScore = 0;
 
             policeScoreBarResultLbl.Text = policeScore.ToString();
+            police1ScoreBarResultLbl.Text = police1Score.ToString();
             thiefScoreResultBarLbl.Text = thiefScore.ToString();
 
-            randomLocationsForThiefAndPolice();
+            randomLocationsForThiefAndPoliceAndPolice1();
             
         }
 
         private void gameOver()
         {
-            
+            snailPbx.Visible = false;
+            flashPbx.Visible = false;
+            freezePbx.Visible = false;
+            invisiblePbx.Visible = false;
+            policePbx.Visible = false;
+            police1Pbx.Visible = false;
+            thiefPbx.Visible = false;
             gameOverPanel.Visible = true;
             
             levelsTimer.Stop();
             timeLeftTimer.Stop();
             policeTimer.Stop();
+            police1Timer.Stop();
             ThiefTimer.Stop();
             
 
@@ -812,17 +1132,23 @@ namespace CaptureTheThief
             game.ID = GameID;
             game.Duration = gameDuration;
             game.PoliceScore = policeScore;
+            game.Police1Score = police1Score;
             game.ThiefScore = thiefScore;
             
-            if (policeScore > thiefScore)
+            if (policeScore > thiefScore && policeScore > police1Score)
             {
                 gameOverPanel.BackgroundImage = Properties.Resources.Police_won_removebg_preview;
                 winner = game.Police.Name;
             }
-            else if (policeScore < thiefScore)
+            else if (policeScore < thiefScore && police1Score < thiefScore)
             {
                 gameOverPanel.BackgroundImage = Properties.Resources.Thief_Won_removebg_preview;
                 winner = game.Thief.Name;
+            }
+            else if(police1Score > thiefScore && police1Score > policeScore)
+            {
+                gameOverPanel.BackgroundImage = Properties.Resources.Police_won_removebg_preview;
+                winner = game.Police1.Name;
             }
             else
             {

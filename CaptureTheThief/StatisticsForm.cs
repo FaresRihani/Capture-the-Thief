@@ -144,6 +144,7 @@ namespace CaptureTheThief
                     highestScore = scoreTwoMax;
                 }
                 realHighestScoreLbl.Text = highestScore.ToString();
+
                 //get the Minimum Score
                 scoreOneMin = Data.AllGames.Min(x => x.PoliceScore);
                 scoreTwoMin = Data.AllGames.Min(x => x.ThiefScore);
@@ -157,10 +158,9 @@ namespace CaptureTheThief
                 }
                 realHighestScoreLbl.Text = highestScore.ToString();
                 realLowestScoreLbl.Text = lowestScore.ToString();
-
+               
 
                 //Minimum Duration
-
                 minimumDuration = Data.AllGames.Min(x => x.Duration);
                 int minutesMin = minimumDuration / 60;
                 int secondsMin = minimumDuration - (minutesMin * 60);

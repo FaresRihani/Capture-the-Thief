@@ -79,6 +79,13 @@ namespace CaptureTheThief
             this.thiefPbx = new System.Windows.Forms.PictureBox();
             this.policePbx = new System.Windows.Forms.PictureBox();
             this.gameMapPbx = new System.Windows.Forms.PictureBox();
+            this.police1Pbx = new System.Windows.Forms.PictureBox();
+            this.police1BarPanel = new System.Windows.Forms.Panel();
+            this.police1ScoreBarResultLbl = new System.Windows.Forms.Label();
+            this.police1ScoreBarLbl = new System.Windows.Forms.Label();
+            this.police1NameBarResultLbl = new System.Windows.Forms.Label();
+            this.police1NameBarLbl = new System.Windows.Forms.Label();
+            this.police1Timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel10.SuspendLayout();
             this.policeBarPanel.SuspendLayout();
@@ -90,6 +97,8 @@ namespace CaptureTheThief
             ((System.ComponentModel.ISupportInitialize)(this.thiefPbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameMapPbx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.police1Pbx)).BeginInit();
+            this.police1BarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,7 +113,8 @@ namespace CaptureTheThief
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1222, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(815, 31);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -116,25 +126,25 @@ namespace CaptureTheThief
             this.toolStripSeparator1,
             this.endToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Enabled = false;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(149, 34);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.newToolStripMenuItem.Text = "New";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
             // 
             // endToolStripMenuItem
             // 
             this.endToolStripMenuItem.Name = "endToolStripMenuItem";
-            this.endToolStripMenuItem.Size = new System.Drawing.Size(149, 34);
+            this.endToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.endToolStripMenuItem.Text = "End";
             this.endToolStripMenuItem.Click += new System.EventHandler(this.endToolStripMenuItem_Click);
             // 
@@ -144,7 +154,7 @@ namespace CaptureTheThief
             this.newToolStripMenuItem1,
             this.currentToolStripMenuItem});
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(78, 30);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.profileToolStripMenuItem.Text = "Profile";
             // 
             // newToolStripMenuItem1
@@ -167,7 +177,7 @@ namespace CaptureTheThief
             this.statisticsToolStripMenuItem,
             this.historyToolStripMenuItem});
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(81, 30);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
             this.reportToolStripMenuItem.Text = "Report";
             // 
             // statisticsToolStripMenuItem
@@ -188,80 +198,89 @@ namespace CaptureTheThief
             // 
             this.helpToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 30);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 29);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(837, 205);
+            this.panel1.Location = new System.Drawing.Point(558, 133);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(96, 435);
+            this.panel1.Size = new System.Drawing.Size(64, 283);
             this.panel1.TabIndex = 21;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(128, 580);
+            this.panel2.Location = new System.Drawing.Point(85, 377);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 89);
+            this.panel2.Size = new System.Drawing.Size(233, 58);
             this.panel2.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(626, 471);
+            this.panel3.Location = new System.Drawing.Point(417, 306);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(98, 198);
+            this.panel3.Size = new System.Drawing.Size(65, 129);
             this.panel3.TabIndex = 0;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(399, 355);
+            this.panel4.Location = new System.Drawing.Point(266, 231);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(324, 123);
+            this.panel4.Size = new System.Drawing.Size(216, 80);
             this.panel4.TabIndex = 0;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.Location = new System.Drawing.Point(1036, 197);
+            this.panel5.Location = new System.Drawing.Point(691, 128);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(98, 38);
+            this.panel5.Size = new System.Drawing.Size(65, 25);
             this.panel5.TabIndex = 0;
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(421, 197);
+            this.panel6.Location = new System.Drawing.Point(281, 128);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(280, 66);
+            this.panel6.Size = new System.Drawing.Size(187, 43);
             this.panel6.TabIndex = 22;
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(1035, 629);
+            this.panel7.Location = new System.Drawing.Point(690, 409);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(82, 42);
+            this.panel7.Size = new System.Drawing.Size(55, 27);
             this.panel7.TabIndex = 23;
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.Transparent;
-            this.panel8.Location = new System.Drawing.Point(1035, 329);
+            this.panel8.Location = new System.Drawing.Point(690, 214);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(82, 194);
+            this.panel8.Size = new System.Drawing.Size(55, 126);
             this.panel8.TabIndex = 24;
             // 
             // panel9
             // 
-            this.panel9.Location = new System.Drawing.Point(120, 208);
+            this.panel9.Location = new System.Drawing.Point(80, 135);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(147, 271);
+            this.panel9.Size = new System.Drawing.Size(98, 176);
             this.panel9.TabIndex = 25;
             // 
             // levelsTimer
@@ -299,9 +318,10 @@ namespace CaptureTheThief
             this.gameOverPanel.BackColor = System.Drawing.Color.Transparent;
             this.gameOverPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gameOverPanel.ForeColor = System.Drawing.Color.Transparent;
-            this.gameOverPanel.Location = new System.Drawing.Point(90, 179);
+            this.gameOverPanel.Location = new System.Drawing.Point(60, 116);
+            this.gameOverPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gameOverPanel.Name = "gameOverPanel";
-            this.gameOverPanel.Size = new System.Drawing.Size(1059, 522);
+            this.gameOverPanel.Size = new System.Drawing.Size(706, 339);
             this.gameOverPanel.TabIndex = 35;
             this.gameOverPanel.Visible = false;
             this.gameOverPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gameOverPanel_Paint);
@@ -310,13 +330,15 @@ namespace CaptureTheThief
             // 
             this.panel10.BackgroundImage = global::CaptureTheThief.Properties.Resources.UpFINAL;
             this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel10.Controls.Add(this.police1BarPanel);
             this.panel10.Controls.Add(this.levelResultBarLbl);
             this.panel10.Controls.Add(this.policeBarPanel);
             this.panel10.Controls.Add(this.thiefBarPanel);
             this.panel10.Controls.Add(this.timeLeftResultBarLbl);
-            this.panel10.Location = new System.Drawing.Point(0, 36);
+            this.panel10.Location = new System.Drawing.Point(0, 23);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1222, 81);
+            this.panel10.Size = new System.Drawing.Size(815, 53);
             this.panel10.TabIndex = 8;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint_1);
             // 
@@ -325,7 +347,8 @@ namespace CaptureTheThief
             this.levelResultBarLbl.AutoSize = true;
             this.levelResultBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.levelResultBarLbl.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.levelResultBarLbl.Location = new System.Drawing.Point(789, 42);
+            this.levelResultBarLbl.Location = new System.Drawing.Point(526, 27);
+            this.levelResultBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.levelResultBarLbl.Name = "levelResultBarLbl";
             this.levelResultBarLbl.Size = new System.Drawing.Size(22, 24);
             this.levelResultBarLbl.TabIndex = 3;
@@ -338,9 +361,10 @@ namespace CaptureTheThief
             this.policeBarPanel.Controls.Add(this.policeScoreBarLbl);
             this.policeBarPanel.Controls.Add(this.policeNameBarResultLbl);
             this.policeBarPanel.Controls.Add(this.policeNameBarLbl);
-            this.policeBarPanel.Location = new System.Drawing.Point(79, 3);
+            this.policeBarPanel.Location = new System.Drawing.Point(53, 2);
+            this.policeBarPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.policeBarPanel.Name = "policeBarPanel";
-            this.policeBarPanel.Size = new System.Drawing.Size(240, 78);
+            this.policeBarPanel.Size = new System.Drawing.Size(160, 51);
             this.policeBarPanel.TabIndex = 28;
             // 
             // policeScoreBarResultLbl
@@ -349,7 +373,8 @@ namespace CaptureTheThief
             this.policeScoreBarResultLbl.BackColor = System.Drawing.Color.Transparent;
             this.policeScoreBarResultLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.policeScoreBarResultLbl.ForeColor = System.Drawing.Color.White;
-            this.policeScoreBarResultLbl.Location = new System.Drawing.Point(129, 49);
+            this.policeScoreBarResultLbl.Location = new System.Drawing.Point(86, 32);
+            this.policeScoreBarResultLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeScoreBarResultLbl.Name = "policeScoreBarResultLbl";
             this.policeScoreBarResultLbl.Size = new System.Drawing.Size(22, 24);
             this.policeScoreBarResultLbl.TabIndex = 3;
@@ -361,7 +386,8 @@ namespace CaptureTheThief
             this.policeScoreBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.policeScoreBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.policeScoreBarLbl.ForeColor = System.Drawing.Color.White;
-            this.policeScoreBarLbl.Location = new System.Drawing.Point(11, 49);
+            this.policeScoreBarLbl.Location = new System.Drawing.Point(7, 32);
+            this.policeScoreBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeScoreBarLbl.Name = "policeScoreBarLbl";
             this.policeScoreBarLbl.Size = new System.Drawing.Size(90, 24);
             this.policeScoreBarLbl.TabIndex = 2;
@@ -373,7 +399,8 @@ namespace CaptureTheThief
             this.policeNameBarResultLbl.BackColor = System.Drawing.Color.Transparent;
             this.policeNameBarResultLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.policeNameBarResultLbl.ForeColor = System.Drawing.Color.White;
-            this.policeNameBarResultLbl.Location = new System.Drawing.Point(129, 16);
+            this.policeNameBarResultLbl.Location = new System.Drawing.Point(86, 10);
+            this.policeNameBarResultLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeNameBarResultLbl.Name = "policeNameBarResultLbl";
             this.policeNameBarResultLbl.Size = new System.Drawing.Size(22, 24);
             this.policeNameBarResultLbl.TabIndex = 1;
@@ -386,11 +413,12 @@ namespace CaptureTheThief
             this.policeNameBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.policeNameBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.policeNameBarLbl.ForeColor = System.Drawing.Color.White;
-            this.policeNameBarLbl.Location = new System.Drawing.Point(11, 16);
+            this.policeNameBarLbl.Location = new System.Drawing.Point(7, 10);
+            this.policeNameBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeNameBarLbl.Name = "policeNameBarLbl";
-            this.policeNameBarLbl.Size = new System.Drawing.Size(98, 24);
+            this.policeNameBarLbl.Size = new System.Drawing.Size(110, 24);
             this.policeNameBarLbl.TabIndex = 0;
-            this.policeNameBarLbl.Text = "Police: ";
+            this.policeNameBarLbl.Text = "Police1: ";
             this.policeNameBarLbl.Click += new System.EventHandler(this.policeNameBarLbl_Click);
             // 
             // thiefBarPanel
@@ -399,9 +427,10 @@ namespace CaptureTheThief
             this.thiefBarPanel.Controls.Add(this.thiefScoreBarLbl);
             this.thiefBarPanel.Controls.Add(this.thiefNameResultBarLbl);
             this.thiefBarPanel.Controls.Add(this.thiefNameBarLbl);
-            this.thiefBarPanel.Location = new System.Drawing.Point(889, 3);
+            this.thiefBarPanel.Location = new System.Drawing.Point(593, 2);
+            this.thiefBarPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.thiefBarPanel.Name = "thiefBarPanel";
-            this.thiefBarPanel.Size = new System.Drawing.Size(240, 78);
+            this.thiefBarPanel.Size = new System.Drawing.Size(160, 51);
             this.thiefBarPanel.TabIndex = 0;
             this.thiefBarPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.thiefBarPanel_Paint);
             // 
@@ -411,7 +440,8 @@ namespace CaptureTheThief
             this.thiefScoreResultBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.thiefScoreResultBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thiefScoreResultBarLbl.ForeColor = System.Drawing.Color.White;
-            this.thiefScoreResultBarLbl.Location = new System.Drawing.Point(141, 49);
+            this.thiefScoreResultBarLbl.Location = new System.Drawing.Point(94, 32);
+            this.thiefScoreResultBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.thiefScoreResultBarLbl.Name = "thiefScoreResultBarLbl";
             this.thiefScoreResultBarLbl.Size = new System.Drawing.Size(22, 24);
             this.thiefScoreResultBarLbl.TabIndex = 7;
@@ -423,7 +453,8 @@ namespace CaptureTheThief
             this.thiefScoreBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.thiefScoreBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thiefScoreBarLbl.ForeColor = System.Drawing.Color.White;
-            this.thiefScoreBarLbl.Location = new System.Drawing.Point(23, 49);
+            this.thiefScoreBarLbl.Location = new System.Drawing.Point(15, 32);
+            this.thiefScoreBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.thiefScoreBarLbl.Name = "thiefScoreBarLbl";
             this.thiefScoreBarLbl.Size = new System.Drawing.Size(90, 24);
             this.thiefScoreBarLbl.TabIndex = 6;
@@ -435,7 +466,8 @@ namespace CaptureTheThief
             this.thiefNameResultBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.thiefNameResultBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thiefNameResultBarLbl.ForeColor = System.Drawing.Color.White;
-            this.thiefNameResultBarLbl.Location = new System.Drawing.Point(141, 16);
+            this.thiefNameResultBarLbl.Location = new System.Drawing.Point(94, 10);
+            this.thiefNameResultBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.thiefNameResultBarLbl.Name = "thiefNameResultBarLbl";
             this.thiefNameResultBarLbl.Size = new System.Drawing.Size(22, 24);
             this.thiefNameResultBarLbl.TabIndex = 5;
@@ -447,7 +479,8 @@ namespace CaptureTheThief
             this.thiefNameBarLbl.BackColor = System.Drawing.Color.Transparent;
             this.thiefNameBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thiefNameBarLbl.ForeColor = System.Drawing.Color.White;
-            this.thiefNameBarLbl.Location = new System.Drawing.Point(23, 16);
+            this.thiefNameBarLbl.Location = new System.Drawing.Point(15, 10);
+            this.thiefNameBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.thiefNameBarLbl.Name = "thiefNameBarLbl";
             this.thiefNameBarLbl.Size = new System.Drawing.Size(86, 24);
             this.thiefNameBarLbl.TabIndex = 4;
@@ -458,7 +491,8 @@ namespace CaptureTheThief
             this.timeLeftResultBarLbl.AutoSize = true;
             this.timeLeftResultBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLeftResultBarLbl.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.timeLeftResultBarLbl.Location = new System.Drawing.Point(369, 42);
+            this.timeLeftResultBarLbl.Location = new System.Drawing.Point(246, 27);
+            this.timeLeftResultBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeLeftResultBarLbl.Name = "timeLeftResultBarLbl";
             this.timeLeftResultBarLbl.Size = new System.Drawing.Size(65, 24);
             this.timeLeftResultBarLbl.TabIndex = 1;
@@ -468,9 +502,10 @@ namespace CaptureTheThief
             // invisiblePbx
             // 
             this.invisiblePbx.Image = global::CaptureTheThief.Properties.Resources.invisible_removebg_preview;
-            this.invisiblePbx.Location = new System.Drawing.Point(196, 134);
+            this.invisiblePbx.Location = new System.Drawing.Point(131, 87);
+            this.invisiblePbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.invisiblePbx.Name = "invisiblePbx";
-            this.invisiblePbx.Size = new System.Drawing.Size(61, 50);
+            this.invisiblePbx.Size = new System.Drawing.Size(41, 32);
             this.invisiblePbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.invisiblePbx.TabIndex = 34;
             this.invisiblePbx.TabStop = false;
@@ -478,9 +513,10 @@ namespace CaptureTheThief
             // freezePbx
             // 
             this.freezePbx.Image = global::CaptureTheThief.Properties.Resources.freeze_removebg_preview;
-            this.freezePbx.Location = new System.Drawing.Point(28, 134);
+            this.freezePbx.Location = new System.Drawing.Point(19, 87);
+            this.freezePbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.freezePbx.Name = "freezePbx";
-            this.freezePbx.Size = new System.Drawing.Size(61, 50);
+            this.freezePbx.Size = new System.Drawing.Size(41, 32);
             this.freezePbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.freezePbx.TabIndex = 33;
             this.freezePbx.TabStop = false;
@@ -490,9 +526,10 @@ namespace CaptureTheThief
             this.flashPbx.BackgroundImage = global::CaptureTheThief.Properties.Resources.flash_removebg_preview;
             this.flashPbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flashPbx.Enabled = false;
-            this.flashPbx.Location = new System.Drawing.Point(301, 134);
+            this.flashPbx.Location = new System.Drawing.Point(201, 87);
+            this.flashPbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flashPbx.Name = "flashPbx";
-            this.flashPbx.Size = new System.Drawing.Size(61, 50);
+            this.flashPbx.Size = new System.Drawing.Size(41, 32);
             this.flashPbx.TabIndex = 31;
             this.flashPbx.TabStop = false;
             this.flashPbx.Visible = false;
@@ -502,9 +539,10 @@ namespace CaptureTheThief
             this.snailPbx.BackgroundImage = global::CaptureTheThief.Properties.Resources.snail_removebg_preview2;
             this.snailPbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.snailPbx.Enabled = false;
-            this.snailPbx.Location = new System.Drawing.Point(747, 134);
+            this.snailPbx.Location = new System.Drawing.Point(498, 87);
+            this.snailPbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.snailPbx.Name = "snailPbx";
-            this.snailPbx.Size = new System.Drawing.Size(60, 50);
+            this.snailPbx.Size = new System.Drawing.Size(40, 32);
             this.snailPbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.snailPbx.TabIndex = 32;
             this.snailPbx.TabStop = false;
@@ -513,9 +551,10 @@ namespace CaptureTheThief
             // thiefPbx
             // 
             this.thiefPbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.thiefPbx.Location = new System.Drawing.Point(762, 668);
+            this.thiefPbx.Location = new System.Drawing.Point(508, 434);
+            this.thiefPbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.thiefPbx.Name = "thiefPbx";
-            this.thiefPbx.Size = new System.Drawing.Size(45, 52);
+            this.thiefPbx.Size = new System.Drawing.Size(30, 34);
             this.thiefPbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.thiefPbx.TabIndex = 26;
             this.thiefPbx.TabStop = false;
@@ -524,9 +563,10 @@ namespace CaptureTheThief
             // 
             this.policePbx.BackColor = System.Drawing.Color.Black;
             this.policePbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.policePbx.Location = new System.Drawing.Point(28, 518);
+            this.policePbx.Location = new System.Drawing.Point(19, 337);
+            this.policePbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.policePbx.Name = "policePbx";
-            this.policePbx.Size = new System.Drawing.Size(45, 52);
+            this.policePbx.Size = new System.Drawing.Size(30, 34);
             this.policePbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.policePbx.TabIndex = 27;
             this.policePbx.TabStop = false;
@@ -536,20 +576,104 @@ namespace CaptureTheThief
             // 
             this.gameMapPbx.BackColor = System.Drawing.SystemColors.ControlDark;
             this.gameMapPbx.Image = global::CaptureTheThief.Properties.Resources.NightMap__1_;
-            this.gameMapPbx.Location = new System.Drawing.Point(12, 123);
+            this.gameMapPbx.Location = new System.Drawing.Point(8, 80);
+            this.gameMapPbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gameMapPbx.Name = "gameMapPbx";
-            this.gameMapPbx.Size = new System.Drawing.Size(1202, 618);
+            this.gameMapPbx.Size = new System.Drawing.Size(801, 402);
             this.gameMapPbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.gameMapPbx.TabIndex = 18;
             this.gameMapPbx.TabStop = false;
             this.gameMapPbx.Click += new System.EventHandler(this.mapPbx_Click);
             // 
+            // police1Pbx
+            // 
+            this.police1Pbx.BackColor = System.Drawing.Color.Black;
+            this.police1Pbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.police1Pbx.Location = new System.Drawing.Point(770, 137);
+            this.police1Pbx.Margin = new System.Windows.Forms.Padding(2);
+            this.police1Pbx.Name = "police1Pbx";
+            this.police1Pbx.Size = new System.Drawing.Size(30, 34);
+            this.police1Pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.police1Pbx.TabIndex = 36;
+            this.police1Pbx.TabStop = false;
+            this.police1Pbx.Click += new System.EventHandler(this.police1Pbx_Click);
+            // 
+            // police1BarPanel
+            // 
+            this.police1BarPanel.Controls.Add(this.police1ScoreBarResultLbl);
+            this.police1BarPanel.Controls.Add(this.police1ScoreBarLbl);
+            this.police1BarPanel.Controls.Add(this.police1NameBarResultLbl);
+            this.police1BarPanel.Controls.Add(this.police1NameBarLbl);
+            this.police1BarPanel.Location = new System.Drawing.Point(322, 2);
+            this.police1BarPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.police1BarPanel.Name = "police1BarPanel";
+            this.police1BarPanel.Size = new System.Drawing.Size(160, 51);
+            this.police1BarPanel.TabIndex = 29;
+            // 
+            // police1ScoreBarResultLbl
+            // 
+            this.police1ScoreBarResultLbl.AutoSize = true;
+            this.police1ScoreBarResultLbl.BackColor = System.Drawing.Color.Transparent;
+            this.police1ScoreBarResultLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1ScoreBarResultLbl.ForeColor = System.Drawing.Color.White;
+            this.police1ScoreBarResultLbl.Location = new System.Drawing.Point(86, 32);
+            this.police1ScoreBarResultLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.police1ScoreBarResultLbl.Name = "police1ScoreBarResultLbl";
+            this.police1ScoreBarResultLbl.Size = new System.Drawing.Size(22, 24);
+            this.police1ScoreBarResultLbl.TabIndex = 3;
+            this.police1ScoreBarResultLbl.Text = "0";
+            // 
+            // police1ScoreBarLbl
+            // 
+            this.police1ScoreBarLbl.AutoSize = true;
+            this.police1ScoreBarLbl.BackColor = System.Drawing.Color.Transparent;
+            this.police1ScoreBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1ScoreBarLbl.ForeColor = System.Drawing.Color.White;
+            this.police1ScoreBarLbl.Location = new System.Drawing.Point(7, 32);
+            this.police1ScoreBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.police1ScoreBarLbl.Name = "police1ScoreBarLbl";
+            this.police1ScoreBarLbl.Size = new System.Drawing.Size(90, 24);
+            this.police1ScoreBarLbl.TabIndex = 2;
+            this.police1ScoreBarLbl.Text = "Score: ";
+            // 
+            // police1NameBarResultLbl
+            // 
+            this.police1NameBarResultLbl.AutoSize = true;
+            this.police1NameBarResultLbl.BackColor = System.Drawing.Color.Transparent;
+            this.police1NameBarResultLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1NameBarResultLbl.ForeColor = System.Drawing.Color.White;
+            this.police1NameBarResultLbl.Location = new System.Drawing.Point(86, 10);
+            this.police1NameBarResultLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.police1NameBarResultLbl.Name = "police1NameBarResultLbl";
+            this.police1NameBarResultLbl.Size = new System.Drawing.Size(22, 24);
+            this.police1NameBarResultLbl.TabIndex = 1;
+            this.police1NameBarResultLbl.Text = "0";
+            // 
+            // police1NameBarLbl
+            // 
+            this.police1NameBarLbl.AutoSize = true;
+            this.police1NameBarLbl.BackColor = System.Drawing.Color.Transparent;
+            this.police1NameBarLbl.Font = new System.Drawing.Font("Stencil", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.police1NameBarLbl.ForeColor = System.Drawing.Color.White;
+            this.police1NameBarLbl.Location = new System.Drawing.Point(7, 10);
+            this.police1NameBarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.police1NameBarLbl.Name = "police1NameBarLbl";
+            this.police1NameBarLbl.Size = new System.Drawing.Size(110, 24);
+            this.police1NameBarLbl.TabIndex = 0;
+            this.police1NameBarLbl.Text = "Police2: ";
+            // 
+            // police1Timer
+            // 
+            this.police1Timer.Interval = 20;
+            this.police1Timer.Tick += new System.EventHandler(this.police1MoveTimerEvent);
+            // 
             // CaptureTheThief
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1222, 752);
+            this.ClientSize = new System.Drawing.Size(815, 489);
+            this.Controls.Add(this.police1Pbx);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.gameOverPanel);
             this.Controls.Add(this.invisiblePbx);
@@ -570,6 +694,7 @@ namespace CaptureTheThief
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "CaptureTheThief";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -592,6 +717,9 @@ namespace CaptureTheThief
             ((System.ComponentModel.ISupportInitialize)(this.thiefPbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameMapPbx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.police1Pbx)).EndInit();
+            this.police1BarPanel.ResumeLayout(false);
+            this.police1BarPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,5 +775,12 @@ namespace CaptureTheThief
         private System.Windows.Forms.PictureBox invisiblePbx;
         private System.Windows.Forms.Panel gameOverPanel;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.PictureBox police1Pbx;
+        private System.Windows.Forms.Panel police1BarPanel;
+        private System.Windows.Forms.Label police1ScoreBarResultLbl;
+        private System.Windows.Forms.Label police1ScoreBarLbl;
+        private System.Windows.Forms.Label police1NameBarResultLbl;
+        private System.Windows.Forms.Label police1NameBarLbl;
+        private System.Windows.Forms.Timer police1Timer;
     }
 }

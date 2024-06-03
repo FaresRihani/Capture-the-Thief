@@ -55,12 +55,11 @@ namespace CaptureTheThief
             this.HistoryDataGrid.BackgroundColor = System.Drawing.Color.Black;
             this.HistoryDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.HistoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HistoryDataGrid.Location = new System.Drawing.Point(60, 130);
-            this.HistoryDataGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.HistoryDataGrid.Location = new System.Drawing.Point(12, 85);
             this.HistoryDataGrid.Name = "HistoryDataGrid";
             this.HistoryDataGrid.ReadOnly = true;
             this.HistoryDataGrid.RowHeadersWidth = 62;
-            this.HistoryDataGrid.Size = new System.Drawing.Size(992, 386);
+            this.HistoryDataGrid.Size = new System.Drawing.Size(800, 251);
             this.HistoryDataGrid.TabIndex = 7;
             this.HistoryDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HistoryDataGrid_CellContentClick);
             // 
@@ -76,7 +75,8 @@ namespace CaptureTheThief
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1236, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(824, 31);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -171,15 +171,16 @@ namespace CaptureTheThief
             // 
             // HistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CaptureTheThief.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1236, 619);
+            this.ClientSize = new System.Drawing.Size(824, 402);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.HistoryDataGrid);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "HistoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

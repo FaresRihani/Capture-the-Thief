@@ -29,7 +29,7 @@ namespace CaptureTheThief
             PlayerInfo player = new PlayerInfo
             {
                 Name = "Faris",
-                Age = 15,
+                Age = 23,
                 gender = GenderEnum.Male,
                 backgroundColor = ColorEnum.Blue,
                 Id = 1,
@@ -40,7 +40,7 @@ namespace CaptureTheThief
             player = new PlayerInfo
             {
                 Name = "Ahmad",
-                Age = 17,
+                Age = 28,
                 gender = GenderEnum.Male,
                 backgroundColor = ColorEnum.Green,
                 Id = 2,
@@ -50,15 +50,26 @@ namespace CaptureTheThief
             player = new PlayerInfo
             {
                 Name = "Computer",
-                Age = 25,
+                Age = 0,
                 gender = GenderEnum.Female,
                 backgroundColor = ColorEnum.Yellow,
                 Id = 3,
                 
             };
             Data.players.Add(player);
-            
-            
+
+            player = new PlayerInfo
+            {
+                Name = "Ali",
+                Age = 20,
+                gender = GenderEnum.Male,
+                backgroundColor = ColorEnum.Blue,
+                Id = 4,
+
+            };
+            Data.players.Add(player);
+
+
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)

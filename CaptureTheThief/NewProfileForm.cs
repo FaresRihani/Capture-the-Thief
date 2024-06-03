@@ -12,7 +12,7 @@ namespace CaptureTheThief
 {
     public partial class NewProfileForm : Form
     {
-        static int PlayerID = 3;
+        static int PlayerID = 4;
         
         public NewProfileForm()
         {
@@ -29,22 +29,22 @@ namespace CaptureTheThief
                 //check if there is a player with the same name
                 if (Data.players.Where(x => x.Name == Nametxt.Text).Count() > 0)
                 {
-                    MessageBox.Show("Validation Error : This player profile is already exist  ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Validation Error : This player profile is already exist  ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-            }
+            } 
            
             //Check if Player Name is null or empty string
             if (String.IsNullOrEmpty(Nametxt.Text))
             {
-                MessageBox.Show("Validation Error : Palyer Name is Required ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Validation Error : Player Name is Required ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
                 
             }
             //Check if profile Gender  is null or empty 
             if (MaleRbtn.Checked == false && femaleRbtn.Checked == false)
             {
-                MessageBox.Show("Validation Error : Gender is Required ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Validation Error : Gender is Required ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
                 
             }
@@ -52,7 +52,7 @@ namespace CaptureTheThief
             //Check if Age is null or empty string
             if (String.IsNullOrEmpty(ageComb.Text))
             {
-                MessageBox.Show("Validation Error : Age is Required ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Validation Error : Age is Required ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
                
             }
@@ -60,14 +60,14 @@ namespace CaptureTheThief
             //Check if profile Background Color  is null or empty 
             if (blueRbtn.Checked == false && greenRbtn.Checked == false && yellowRbtn.Checked == false)
             {
-                MessageBox.Show("Validation Error : Background Color is Required ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Validation Error : Background Color is Required ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
                 
             }
             if (Nametxt.Text.Length > 20)
             {
                 Nametxt.Text = "";
-                MessageBox.Show("Validation Error : the maximum length for Name is 20 character ", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Validation Error : the maximum length for Name is 20 character ", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
                
             }
@@ -112,14 +112,15 @@ namespace CaptureTheThief
                     }
                     
                     Data.players.Add(playerInfo);
-                    MessageBox.Show("Successfully saved", " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfully saved", " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                    
                 }
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error : " + ex.Message, " Palyer Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error " + ex.Message, " Player Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     return false;
                 }
 
@@ -202,12 +203,10 @@ namespace CaptureTheThief
         {
 
         }
-
         private void ImagePbx_Click(object sender, EventArgs e)
         {
 
         }
-
         private void MaleRbtn_CheckedChanged(object sender, EventArgs e)
         {
 

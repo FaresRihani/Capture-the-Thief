@@ -12,8 +12,10 @@ namespace CaptureTheThief
         public static List<GameInfo> AllGames = new List<GameInfo>();
         public static List<PlayerInfo> players;
         public static PlayerInfo CurrentPolice;
+        public static PlayerInfo CurrentPolice1;
         public static PlayerInfo CurrentThief;
         public static bool isPoliceComputerMode { get; set; }
+        public static bool isPolice1ComputerMode { get; set; }
         public static bool isThiefComputerMode { get; set; }
     }
 }

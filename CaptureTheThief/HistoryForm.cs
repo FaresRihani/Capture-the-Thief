@@ -45,6 +45,7 @@ namespace CaptureTheThief
             HelpForm helpForm = new HelpForm();
 
             helpForm.Show();
+            this.Close();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -64,7 +65,6 @@ namespace CaptureTheThief
             NewProfileForm newProfileForm = new NewProfileForm();
 
             newProfileForm.Show();
-            this.Hide();
             this.Close();
         }
 
@@ -143,8 +143,10 @@ namespace CaptureTheThief
             historyTable.Columns.Add("Duration", typeof(string));
             historyTable.Columns.Add("Thief", typeof(string));
             historyTable.Columns.Add("Score1", typeof(string));
-            historyTable.Columns.Add("Police", typeof(string));
+            historyTable.Columns.Add("Police1", typeof(string));
             historyTable.Columns.Add("Score2", typeof(string));
+            historyTable.Columns.Add("Police2", typeof(string));
+            historyTable.Columns.Add("Score3", typeof(string));
 
             int minutes = 0;
             int seconds = 0;
@@ -157,7 +159,7 @@ namespace CaptureTheThief
                 DurationSecondFormat = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
                 DurationMinutesFormat = minutes < 10 ? "0" + minutes.ToString() : minutes.ToString();
 
-                historyTable.Rows.Add(x.Date.ToString("dd/MM/yyyy"), DurationMinutesFormat + ":" + DurationSecondFormat, x.Thief.Name, x.ThiefScore, x.Police.Name, x.PoliceScore);
+                historyTable.Rows.Add(x.Date.ToString("dd/MM/yyyy"), DurationMinutesFormat + ":" + DurationSecondFormat, x.Thief.Name, x.ThiefScore, x.Police.Name, x.PoliceScore, x.Police1.Name, x.Police1Score);
             }
             HistoryDataGrid.DataSource = historyTable;
 
